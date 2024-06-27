@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" style= "background-image: url('{% static 'img/cover.jpg' %}')">
+    <h1>Welcome to Fit Journey</h1>
+    <p>Your journey to a healthier life starts here.</p>
+    <a href="{% url 'register' %}" class="btn">Get Started</a>
+</section>
+{% endblock %}

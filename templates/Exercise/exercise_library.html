@@ -1,0 +1,54 @@
+<!-- exercise_library.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise Library</title>
+</head>
+<body>
+    <h1>Exercise Library</h1>
+
+    <!-- Filters -->
+    <form method="get" action="{% url 'filter_exercises' %}">
+        <div>
+            <label for="muscle_group">Filter by Muscle Group:</label>
+            <select name="muscle_group" id="muscle_group">
+                <option value="">All</option>
+                {% for group in muscle_groups %}
+                    <option value="{{ group.id }}">{{ group.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="equipment">Filter by Equipment:</label>
+            <select name="equipment" id="equipment">
+                <option value="">All</option>
+                {% for equip in equipments %}
+                    <option value="{{ equip.id }}">{{ equip.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="difficulty_level">Filter by Difficulty Level:</label>
+            <select name="difficulty_level" id="difficulty_level">
+                <option value="">All</option>
+                {% for level in difficulty_levels %}
+                    <option value="{{ level.id }}">{{ level.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Apply Filters</button>
+    </form>
+
+    <!-- Display Filtered Exercises -->
+    <h2>Filtered Exercises</h2>
+    <ul>
+        {% for exercise in exercises %}
+            <li>{{ exercise.name }}</li>
+            <!-- Add more details as needed -->
+        {% empty %}
+            <li>No exercises found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
